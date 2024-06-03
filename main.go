@@ -1,24 +1,18 @@
 package main
 
 import (
-	"bytes"
+	"fmt"
 	"net/http"
+	"strconv"
 )
 
-func createSnippet(w http.ResponseWriter, r *http.Request) {
+func showSnippet(w http.ResponseWriter, r *http.Request) {
 
-
-
-	if r.Method != http.MethodPost {
-
-
-
-
-		w.WriteHeader(405)
-		w.Write([]byte("GET-Метод запрещен!"))
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil || id < 1 {
+		http.NotFound(w, r)
 		return
-}
+	}
 
-w.Write([]byte("Создание новой заметки..."))
-
+	fmt.Fprintf(w, "Отображение выбзанной заментки с ID %d...", id)
 }
