@@ -7,7 +7,7 @@ import (
 
 // Обработчик главной страницы.
 func home(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Привет из Snippetbox"))
+	w.Write([]byte("Привет из Snippetbox my name is Ron"))
 }
 
 // Обработчик для отображения содержимого заметки.
